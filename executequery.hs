@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+-- Takes SQL query, parses it and writes the execution sequence to a file
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 import SQLQueryParsing
 import Data.List
 import Text.Parsec.Token
@@ -8,16 +12,29 @@ import Control.Monad (MonadPlus(..), ap)
 import Text.ParserCombinators.Parsec hiding (many, optional, (<|>), Column)
 
 -- for aggregate
+<<<<<<< HEAD
+=======
+-- | To remove parenthesis in aggregate function.
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 construct [] = []
 construct (')':xs) = construct xs
 construct (x:xs) = if (x =='(') then (' ':(construct xs))
                     else (x:(construct xs))           
+<<<<<<< HEAD
                     
+=======
+
+-- | Checks if query contains aggregate function and calls 'p_sql'.
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 change str = if (("max" `elem` (words aggregatefunc))||("min" `elem` (words aggregatefunc))||("avg" `elem` (words aggregatefunc))||("count" `elem` (words aggregatefunc))||("sum" `elem` (words aggregatefunc))||("group" `elem` (words aggregatefunc)))
 		then (p_sql aggregatefunc)
 		else (p_sql str)
 	     where aggregatefunc = (unwords (change1 (words $ construct str)))
 
+<<<<<<< HEAD
+=======
+-- | Separating aggregate function.
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 change1 (y : z :[]) = [y,z]
 change1 (y : z : ys) = if ((z == "max")||(z == "min")||(z == "sum")||(z == "avg")||(z == "count"))
                          then if (y == ",") then (" ":z:ys)
@@ -26,7 +43,13 @@ change1 (y : z : ys) = if ((z == "max")||(z == "min")||(z == "sum")||(z == "avg"
                          
 
 
+<<<<<<< HEAD
 -- FOR WRITING IN A FILE                   
+=======
+-- FOR WRITING IN A FILE      
+-- | Functions that takes query; calls 'p_sql' or 'change' and writes the execution order by calling 'querytype' in the file.
+ 
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 fileop :: String -> IO()
 fileop sqlstring = if (("any" `elem` (words sqlstring))||("all" `elem` (words sqlstring))||("exists" `elem` (words sqlstring)))
 		    then case (p_sql sqlstring) of
@@ -76,6 +99,10 @@ fun xs ys = [unwords (fst a)] ++ (fun (tail xs) (snd a))
             where a = break (== (head xs)) ys   
  
 -- Syntax for orderby 
+<<<<<<< HEAD
+=======
+-- | Functions to check the constraint : columns inside ORDER BY is part of columns inside SELECT.
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 removecomma str = if (',' `elem` str)
                     then removecomma (str \\ [','])
                     else str
@@ -97,6 +124,10 @@ ordersyntax str = if (orderelement ord col)
                         ord = takeWhile (/="by") (tail (reverse (words (removecomma str))))
                         
 -- printing groupby
+<<<<<<< HEAD
+=======
+-- | Functions to write execution order for GROUP BY query.
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 breakgroup str = if("where" `elem` (words str))
 		   then fun xs (words (str \\ [';']))
 		   else fun xs1 (words (str \\ [';']))
@@ -109,7 +140,12 @@ groupquery str = if("where" `elem` (words str))
 
 		where x = (breakgroup str)           
 		
+<<<<<<< HEAD
 -- syntax checking of insert                        
+=======
+-- syntax checking of insert           
+-- | Functions to check number of values in INSERT query is same as number of columns
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 removebracket str = if (("(" `elem` str) || (")" `elem` str))
                     then removebracket (str \\ ["(",")"])
                     else str

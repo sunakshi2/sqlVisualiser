@@ -61,6 +61,7 @@ data ColumnRecord= ColumnRecord{
                                 colId :: Maybe String
                                ,colName :: String
                                } deriving Show
+<<<<<<< HEAD
 -- | Data type for a list of columns. An SQL query may contain column names as well as aggregate functions in select statement so it contains a record having a list of 'ColumnRecord' and 'Aggregate'                               
 data ColumnList = ColumnList { columnlist :: [ColumnRecord]
                              , aggregate :: Maybe Aggregate
@@ -74,6 +75,21 @@ data Order = OrderBy { orderByColumn :: [ColumnRecord]
                      , order         :: String
                      }deriving Show  
 -- | Data type for aggregate functions ( Min, Max, Count, Avg, Sum)                     
+=======
+-- | Data type for a list of columns. An SQL query may contain column names as well as aggregate functions in select statement                               
+data ColumnList = ColumnList { columnlist :: [ColumnRecord]
+                             , aggregate :: Maybe Aggregate
+                               } deriving Show   
+                               
+data Group = GroupBy { groupclause :: ColumnRecord
+                     , having      :: Maybe Expr
+                     }deriving Show   
+                     
+data Order = OrderBy { orderByColumn :: [ColumnRecord]
+                     , order         :: String
+                     }deriving Show  
+                     
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 data AggregateFunctions = Max
                         | Min
                         | Count
@@ -81,7 +97,11 @@ data AggregateFunctions = Max
                         | Sum 
                    deriving Show                                                                    
                                                              
+<<<<<<< HEAD
 -- | Data type for an SQL query ( Select, Insert, Delete, Drop, Create, Update)
+=======
+
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 data SQLQuery = Select {     select            :: Either Star ColumnList
                            , from              :: [TableRecord]
                            , wherecondition    :: Maybe Expr
@@ -105,18 +125,27 @@ data SQLQuery = Select {     select            :: Either Star ColumnList
                          ,updWherecondition :: Maybe Expr
                          }
                  deriving Show  
+<<<<<<< HEAD
 -- | Data type for selecting everything from table as * in query "select * from tablename;"                 
 data Star= Everything deriving Show 
 -- | Pairs of column name and the columntype ('ColumnTyp') as given in create table command " create table tabname (colm1 type1,col2 type2);"         
 data ColumnPairs= ColumnPairs String ColumnTyp deriving Show
 -- | Valid types for a column in a table (Int,Double,String,Char,Bool)
+=======
+                 
+data Star= Everything deriving Show         
+data ColumnPairs= ColumnPairs String ColumnTyp deriving Show
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 data ColumnTyp= IntTyp
                 | DoubleTyp
                 | StringTyp
                 | CharTyp
                 | BoolTyp
 		deriving Show
+<<<<<<< HEAD
 -- | Data type for a Table record		
+=======
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
 data TableRecord = TableRecord {
 				   tabName :: String
 				 , tabId  :: Maybe String
