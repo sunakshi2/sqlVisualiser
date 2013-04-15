@@ -1,0 +1,6 @@
+ 
+from b
+
+select aa 
+ where d=h
+dfhdfhd
