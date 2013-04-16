@@ -1,8 +1,19 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 -- | Draws the required graphics on the screen
 module Drawbox where
 import Graphics.UI.GLUT
 
 -- | This function draws all the quads and the corresponding strings 
+<<<<<<< HEAD
+=======
+=======
+module Drawbox where
+import Graphics.UI.GLUT
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 draw str points x y= do
     --clear [ColorBuffer]
     color $ (Color3 (1:: GLfloat) 1 1)
@@ -14,41 +25,88 @@ draw str points x y= do
     renderString Fixed8By13 $ str
     
     flush
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 -- | These are the initial points for the first quad    
 points::[(GLfloat,GLfloat,GLfloat)]
 points =[(0.0, 0.0, 0.0)]
 
 {--
+<<<<<<< HEAD
+=======
+=======
+    
+points::[(GLfloat,GLfloat,GLfloat)]
+points =[(0.0, 0.0, 0.0)]
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 drawnothing = do 
     --clear [ColorBuffer]
     color $ (Color3 (0:: GLfloat) 1 0)
     renderPrimitive Points $ mapM_ (\(x, y, z)->vertex$Vertex3 x y z) points
+<<<<<<< HEAD
     flush--}
  
 -- | This funtion prints the error in the input query on screen  
+=======
+<<<<<<< HEAD
+    flush--}
+ 
+-- | This funtion prints the error in the input query on screen  
+=======
+    flush
+  
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 drawError err = do
     clear [ColorBuffer]
     color $ (Color3 (1:: GLfloat) 0 0)
     currentRasterPosition $= Vertex4 (-0.9:: GLfloat) 0 0 1
     renderString Fixed9By15 $ err
     flush
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
     
 
 
 -- | This function writes the heading of the output window
 drawHeading = do
     clear [ColorBuffer]
+<<<<<<< HEAD
+=======
+=======
+
+drawHeading = do
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
     color $ (Color3 (1:: GLfloat) 0 0)
     currentRasterPosition $= Vertex4 (-0.9:: GLfloat) 0.9 0 1
     renderString Fixed9By15 $ "Query Flow"
     flush
+<<<<<<< HEAD
 
 -- | This function takes points as input and draws the corresponding line.            
+=======
+<<<<<<< HEAD
+
+-- | This function takes points as input and draws the corresponding line.            
+=======
+            
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 drawlines points = do 
     color $ (Color3 (0:: GLfloat) 1 1)
     renderPrimitive Lines $ do
     mapM_ (\(x, y, z)->vertex$Vertex3 x y z) points
     flush
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
     
 drawNothings = do 
     --clear [ColorBuffer]
@@ -65,11 +123,20 @@ drawNothing = do
     flush
     
 -- | This function draws the arrows between quads
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 drawLineLoop points = do 
     color $ (Color3 (0:: GLfloat) 1 1)
     renderPrimitive LineLoop $ do
     mapM_ (\(x, y, z)->vertex$Vertex3 x y z) points
     flush
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
 {--drawArrow points = do
     color $ (Color3 (0:: GLfloat) 1 1)
     renderPrimitive LineStrip $ do
@@ -77,6 +144,17 @@ drawLineLoop points = do
     flush--}
 -- | This function draws the arrows from nested query boxes to the outer query   
 drawArrow points = do
+<<<<<<< HEAD
+=======
+=======
+drawArrow points = do
+    color $ (Color3 (0:: GLfloat) 1 1)
+    renderPrimitive LineStrip $ do
+    mapM_ (\(x, y, z)->vertex$Vertex3 x y z) points
+    flush
+drawArrowDown points = do
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
     color $ (Color3 (0:: GLfloat) 1 1)
     renderPrimitive LineStrip $ do
     mapM_ (\(x, y, z)->vertex$Vertex3 x y z) points

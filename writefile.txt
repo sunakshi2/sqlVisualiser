@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 from b
 
 select a
+=======
+ 
+from b
+
+select aa 
+ where d=h
+dfhdfhd
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
