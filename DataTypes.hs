@@ -49,9 +49,19 @@ data Expr = IntValue Integer
                 | Pos Expr              
                 | Neg Expr              
                 | Not Expr              
+<<<<<<< HEAD
                 deriving Show
                 
 -- | Data type for SQL aggregate function  
+=======
+                   
+  deriving Show
+<<<<<<< HEAD
+-- | Data type for SQL aggregate function  
+=======
+ -- | Data type for SQL aggregate function  
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 data Aggregate = Aggregate { aggregatefunction :: AggregateFunctions
                            , aggregatecolumn :: String
                              } deriving Show   
@@ -61,6 +71,13 @@ data ColumnRecord= ColumnRecord{
                                 colId :: Maybe String
                                ,colName :: String
                                } deriving Show
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 -- | Data type for a list of columns. An SQL query may contain column names as well as aggregate functions in select statement so it contains a record having a list of 'ColumnRecord' and 'Aggregate'                               
 data ColumnList = ColumnList { columnlist :: [ColumnRecord]
                              , aggregate :: Maybe Aggregate
@@ -74,6 +91,27 @@ data Order = OrderBy { orderByColumn :: [ColumnRecord]
                      , order         :: String
                      }deriving Show  
 -- | Data type for aggregate functions ( Min, Max, Count, Avg, Sum)                     
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+-- | Data type for a list of columns. An SQL query may contain column names as well as aggregate functions in select statement                               
+data ColumnList = ColumnList { columnlist :: [ColumnRecord]
+                             , aggregate :: Maybe Aggregate
+                               } deriving Show   
+                               
+data Group = GroupBy { groupclause :: ColumnRecord
+                     , having      :: Maybe Expr
+                     }deriving Show   
+                     
+data Order = OrderBy { orderByColumn :: [ColumnRecord]
+                     , order         :: String
+                     }deriving Show  
+                     
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 data AggregateFunctions = Max
                         | Min
                         | Count
@@ -81,7 +119,19 @@ data AggregateFunctions = Max
                         | Sum 
                    deriving Show                                                                    
                                                              
+<<<<<<< HEAD
 -- | Data type for an SQL query ( Select, Insert, Delete, Drop, Create, Update)
+=======
+<<<<<<< HEAD
+-- | Data type for an SQL query ( Select, Insert, Delete, Drop, Create, Update)
+=======
+<<<<<<< HEAD
+-- | Data type for an SQL query ( Select, Insert, Delete, Drop, Create, Update)
+=======
+
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 data SQLQuery = Select {     select            :: Either Star ColumnList
                            , from              :: [TableRecord]
                            , wherecondition    :: Maybe Expr
@@ -105,18 +155,47 @@ data SQLQuery = Select {     select            :: Either Star ColumnList
                          ,updWherecondition :: Maybe Expr
                          }
                  deriving Show  
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 -- | Data type for selecting everything from table as * in query "select * from tablename;"                 
 data Star= Everything deriving Show 
 -- | Pairs of column name and the columntype ('ColumnTyp') as given in create table command " create table tabname (colm1 type1,col2 type2);"         
 data ColumnPairs= ColumnPairs String ColumnTyp deriving Show
 -- | Valid types for a column in a table (Int,Double,String,Char,Bool)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+                 
+data Star= Everything deriving Show         
+data ColumnPairs= ColumnPairs String ColumnTyp deriving Show
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 data ColumnTyp= IntTyp
                 | DoubleTyp
                 | StringTyp
                 | CharTyp
                 | BoolTyp
 		deriving Show
+<<<<<<< HEAD
 -- | Data type for a Table record		
+=======
+<<<<<<< HEAD
+-- | Data type for a Table record		
+=======
+<<<<<<< HEAD
+-- | Data type for a Table record		
+=======
+>>>>>>> 4be731a488ef019590e6e993e34ec07e3dc4490a
+>>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 data TableRecord = TableRecord {
 				   tabName :: String
 				 , tabId  :: Maybe String
@@ -132,7 +211,11 @@ sqlDef = emptyDef{ commentStart = "/*"
                    , identStart = letter
                    , identLetter = alphaNum <|> char '_'
                    , reservedOpNames = [ ".", "+", "-", "^", "*" , "/", "%", "<", ">", "="]
+<<<<<<< HEAD
                    , reservedNames = ["select", "from", "where", "as", "order by", "group by", "not exists" -- select statement
+=======
+                   , reservedNames = [" select", "from", "where", "as", "order by", "group by" -- select statement
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
                                      , "is" , "not", "and", "or"       -- operators
                                      , "true", "false", "null"         -- literals
                                      , "create", "table"               -- create statement
@@ -172,6 +255,7 @@ opTable = [ [ Prefix (Neg   <$ sql_reservedOp    "-")
             , Infix  (Mod   <$ sql_reservedOp    "%") AssocLeft ]
           , [ Infix  (Plus  <$ sql_reservedOp    "+") AssocLeft
             , Infix  (Minus <$ sql_reservedOp    "-") AssocLeft ]
+<<<<<<< HEAD
           , [ Infix  (LtAny    <$ sql_reservedOp    "< any") AssocLeft 
             , Infix  (GtAny    <$ sql_reserved    "> any") AssocLeft
             , Infix  (LteAny    <$ sql_reserved    "<= any") AssocLeft 
@@ -187,15 +271,40 @@ opTable = [ [ Prefix (Neg   <$ sql_reservedOp    "-")
           , [ Infix  (NotEqAny    <$ sql_reserved    "<> any") AssocLeft ]
           , [ Infix  (NotEq    <$ sql_reserved    "<>") AssocRight ]
           , [ Infix  (Is    <$ sql_reserved     "is") AssocLeft ]
+=======
+          , [ Infix  (LtAny    <$ sql_reserved    "< ANY") AssocLeft 
+            , Infix  (GtAny    <$ sql_reserved    "> ANY") AssocLeft
+            , Infix  (LteAny    <$ sql_reserved    "<= ANY") AssocLeft 
+            , Infix  (GteAny    <$ sql_reserved    ">= ANY") AssocLeft ]
+          , [ Infix  (LtAll    <$ sql_reserved    "< ALL") AssocLeft 
+            , Infix  (GtAll    <$ sql_reserved    "> ALL") AssocLeft
+            , Infix  (LteAll    <$ sql_reserved    "<= ALL") AssocLeft 
+            , Infix  (GteAll    <$ sql_reserved    ">= ALL") AssocLeft ]
+          , [ Infix  (EqAny    <$ sql_reserved    "= ANY") AssocRight ]
+          , [ Infix  (EqAll    <$ sql_reserved    "= ALL") AssocRight ]
+          
+          , [ Infix  (NotEqAll    <$ sql_reserved    "<> ALL") AssocLeft ]
+          , [ Infix  (NotEqAny    <$ sql_reserved    "<> ANY") AssocLeft ]
+          , [ Infix  (NotEq    <$ sql_reserved    "<>") AssocRight ]
+          , [ Infix  (Is    <$ sql_reserved     "IS") AssocLeft ]
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
           , [ Infix  (Lt    <$ sql_reservedOp    "<") AssocLeft
             , Infix  (Gt    <$ sql_reservedOp    ">") AssocLeft
             , Infix  (Lte   <$ sql_reservedOp   "<=") AssocLeft
             , Infix  (Gte   <$ sql_reservedOp   ">=") AssocLeft ]
           , [ Infix  (Eq    <$ sql_reservedOp    "=") AssocRight ]
+<<<<<<< HEAD
           , [ Prefix (Not   <$ sql_reserved    "not") ]
           , [ Infix  (And   <$ sql_reserved    "and") AssocLeft ]
           , [ Infix  (Or    <$ sql_reserved     "or") AssocLeft ]
           , [ Prefix (Exists   <$ sql_reserved    "exists") ]
           , [ Prefix (NotExists   <$ sql_reserved    "not exists") ]
+=======
+          , [ Prefix (Not   <$ sql_reserved    "NOT") ]
+          , [ Infix  (And   <$ sql_reserved    "AND") AssocLeft ]
+          , [ Infix  (Or    <$ sql_reserved     "Or") AssocLeft ]
+          , [ Prefix (Exists   <$ sql_reserved    "EXISTS") ]
+          , [ Prefix (NotExists   <$ sql_reserved    "NOT EXISTS") ]
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
           
         ] 			                    

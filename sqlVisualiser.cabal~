@@ -10,7 +10,11 @@ name:                sqlVisualiser
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
+<<<<<<< HEAD
 version:             0.2.0.0
+=======
+version:             0.1.1.0
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 
 -- A short (one-line) description of the package.
 -- synopsis:            
@@ -28,7 +32,11 @@ license:             GPL-2
 license-file:        LICENSE
 
 -- The package author(s).
+<<<<<<< HEAD
 author:              CS653
+=======
+author:              cs653
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 
 -- An email address to which users can send suggestions, bug reports, and 
 -- patches.
@@ -37,7 +45,11 @@ maintainer:          sunakshi@iitk.ac.in
 -- A copyright notice.
 -- copyright:           
 
+<<<<<<< HEAD
 category:            Parser and visualiser for subset of SQL query
+=======
+category:            parser and visualiser for subset of SQL
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 
 build-type:          Simple
 
@@ -47,11 +59,19 @@ cabal-version:       >=1.8
 
 library
   -- Modules exported by the library.
+<<<<<<< HEAD
   exposed-modules:     SQLParser, ShowGraphics, ExecuteQuery, Drawbox, DataTypes, ReadnSend
+=======
+  exposed-modules:     ShowGraphics, ExecuteQuery, ReadnSend, DataTypes, Drawbox, SQLParser
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
   
   -- Modules included in this library but not exported.
   -- other-modules:       
   
   -- Other library packages from which modules are imported.
+<<<<<<< HEAD
   build-depends:       base ==4.5.*, sqlVisualiser ==0.1.*, parsec ==3.1.*, GLUT ==2.4.*
+=======
+  build-depends:       base ==4.5.*, GLUT ==2.1.*, sqlVisualiser ==0.1.*, parsec ==3.1.*
+>>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
   
