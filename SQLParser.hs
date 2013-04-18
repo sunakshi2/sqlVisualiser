@@ -42,11 +42,7 @@ sql_Expr :: Parser Expr
 sql_Expr = buildExpressionParser opTable sql_Expr' <?> "Expr"
                 where sql_Expr' = sql_parens sql_Expr
                                         <|> Column <$> sql_columns
-<<<<<<< HEAD
                                         <|> NestedSelect <$> sql_select
-=======
-                                        -- <|> NestedSelect <$> sql_select
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
                                         <|> number <$> sql_numeric
                                         <|> StringValue <$> sql_stringValue
                                         <|> CharValue <$> sql_charValue
@@ -77,42 +73,18 @@ sql_set :: Parser (ColumnRecord, Expr)
 sql_set = (,) <$> sql_columns <* sql_reservedOp "="  <*> sql_Expr
              <?> "update statement"		
  
-<<<<<<< HEAD
 -- | Parser for SQL CREATE query           
-=======
-<<<<<<< HEAD
--- | Parser for SQL CREATE query           
-=======
- -- | Parser for SQL CREATE query           
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_create :: Parser SQLQuery
 sql_create = Create <$> (sql_reserved "create" *> sql_reserved "table" *> sql_table)
                     <*> (sql_parens (sepBy1 sql_createcolumn sql_comma))
                     <?> "create statement"
  
-<<<<<<< HEAD
 -- | Parser for creating columns with data types inside CREATE query                   
-=======
-<<<<<<< HEAD
--- | Parser for creating columns with data types inside CREATE query                   
-=======
- -- | Parser for creating columns with data types inside CREATE query                   
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_createcolumn :: Parser ColumnPairs                    
 sql_createcolumn = ColumnPairs <$> sql_identifier 
                                <*> sql_columntype
  
-<<<<<<< HEAD
 -- | Parser for SQL column types                                     
-=======
-<<<<<<< HEAD
--- | Parser for SQL column types                                     
-=======
- -- | Parser for SQL column types                                     
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_columntype :: Parser ColumnTyp                    
 sql_columntype = IntTyp    <$ sql_reserved "int"
              <|> DoubleTyp <$ sql_reserved "double"
@@ -127,15 +99,7 @@ sql_insert = Insert <$> (sql_reserved "insert" *> sql_reserved "into" *> sql_tab
                     <*> optionMaybe (sql_parens $ sepBy1 sql_columns sql_comma)
                     <*> (sql_reserved "values" *> (sql_parens $ sepBy1 sql_Expr sql_comma))
  
-<<<<<<< HEAD
 -- | Parser for SQL SELECT query                  
-=======
-<<<<<<< HEAD
--- | Parser for SQL SELECT query                  
-=======
- -- | Parser for SQL SELECT query                  
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_select :: Parser SQLQuery
 sql_select = Select <$> (sql_reserved "select" *> sql_selectColumns)
                   <*> (sql_reserved "from" *> sepBy1 sql_table sql_comma)
@@ -151,25 +115,11 @@ sql_select = Select <$> (sql_reserved "select" *> sql_selectColumns)
                                         <*> try (string "asc" <|> string "desc")
                                         <?> "Order statement"
  
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 -- | Parser for SQL GROUP BY uses 'sql_havingExpr'                    
 sql_group = GroupBy <$> sql_columns
                   <*> optionMaybe (sql_reserved "having" *> sql_havingExpr)
  
 -- | Parser for SQL HAVING clause               
-<<<<<<< HEAD
-=======
-=======
- -- | Parser for SQL GROUP BY uses 'sql_havingExpr'                    
-sql_group = GroupBy <$> sql_columns
-                  <*> optionMaybe (sql_reserved "having" *> sql_havingExpr)
- 
- -- | Parser for SQL HAVING clause               
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_havingExpr :: Parser Expr
 sql_havingExpr =  buildExpressionParser opTable sql_havingexp' <?> "Expression"
                 where sql_havingexp' = sql_parens sql_Expr
@@ -184,15 +134,7 @@ sql_havingExpr =  buildExpressionParser opTable sql_havingexp' <?> "Expression"
                       extractNum (Left x) = IntValue x
                       extractNum (Right x) = FloatValue x                                                       
  
-<<<<<<< HEAD
 -- | Parser that calls parser for different SQL querries.                     
-=======
-<<<<<<< HEAD
--- | Parser that calls parser for different SQL querries.                     
-=======
- -- | Parser that calls parser for different SQL querries.                     
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 sql_sqlStatement :: Parser SQLQuery
 sql_sqlStatement =    sql_drop
 		          <|> sql_delete

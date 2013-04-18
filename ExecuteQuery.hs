@@ -161,13 +161,7 @@ callSqlParser str = if ("select" `elem` (words str))
                 	else writeFile "writefile.txt" (show (sql_query str))
   
 -- | Main function which instanciate function like 'callSqlParser' and 'display'                        
-<<<<<<< HEAD
 main query = do
                 callSqlParser query
                 display                             
-=======
-sqlQuery  query = do
-                                        callSqlParser query
-                                        display                             
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
                                                                 

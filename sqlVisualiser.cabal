@@ -37,11 +37,7 @@ maintainer:          sunakshi@iitk.ac.in
 -- A copyright notice.
 -- copyright:           
 
-<<<<<<< HEAD
-category:            Parser and visualiser for subset of SQL query
-=======
-category:            Parser and visualiser for a subset of SQL query
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
+category:            Parser and visualiser for sql
 
 build-type:          Simple
 
@@ -57,10 +53,5 @@ library
   -- other-modules:       
   
   -- Other library packages from which modules are imported.
-<<<<<<< HEAD
   build-depends:       base ==4.5.*, sqlVisualiser ==0.1.*, parsec ==3.1.*, GLUT ==2.4.*
   
-=======
-  build-depends:       base ==4.5.*, parsec ==3.1.*, GLUT ==2.4.*
-  
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148

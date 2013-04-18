@@ -1,23 +1,4 @@
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-{- |
-Module      :  <File name or $Header$ to be replaced automatically>
-Description :  <optional short text displayed on contents page>
-Copyright   :  (c) <Authors or Affiliations>
-License     :  <license>
-
-Maintainer  :  <email>
-Stability   :  unstable | experimental | provisional | stable | frozen
-Portability :  portable | non-portable (<reason>)
-
-<module description starting at first column>
--}
->>>>>>> 9d67e341b96fda6cb0c8d1378a0633818abd35d5
->>>>>>> 38dfdf0e16a59805f0e78f9d5374fdbbab858148
 module ShowGraphics  where
 import Graphics.UI.GLUT
 import System.IO  

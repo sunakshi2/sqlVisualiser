@@ -1,0 +1,30 @@
+select:
+
+select col1 , col2 from tab;
+select c1 , c2 from tab where col1<=3 order by c1 asc;
+select col1 , col2 from tab order by col5 asc;
+select col1 , col2 from tab1 where col1 <> any (select coll1 , coll2 , coll3 from tab2 where coll2=8) order by col1 desc;
+select col1 , col2 from tab1 where col1 <= all (select coll1 , coll2 , coll3 from tab2 where coll2=8) order by col1 desc;
+select col1 , col2 from tab1 where exists (select coll1 , coll2 , coll3 from tab2 where coll2=8) order by col1 desc;
+select col1 , col2 from tab1 where not exists (select coll1 , coll2 , coll3 from tab2 where coll2=8) order by col1 desc;
+select col1 , col2 , max(col3) from tab where col1>=1;
+select col1 , max(col3) from tab where col1>=1 group by col3 having sum(col1)>19;
+select s.a,s.b from t1 as s,t2 as c where s.id = c.id;
+
+select c1 , c2 from where col1<=3 order by c1 asc;
+
+insert:
+insert into tab (col1 , col2) values (val1 , val2);
+insert into tab ( col1 , col2 ) values ( val1 , val2 , val3 );
+
+drop:
+drop table tab1 , tab2;
+
+delete:
+delete from tab where col1 <=3;
+
+create:
+create table tab (col1 int , col2 string , col3 double);
+
+update:
+update tab set col1 = 'a' , col2 = 9 where col3 = 8;
